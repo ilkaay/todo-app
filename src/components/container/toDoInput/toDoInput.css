@@ -1,0 +1,10 @@
+.inputContainer {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.inputImg {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.5rem;
+}

@@ -1,0 +1,14 @@
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.hide {
+  visibility: hidden;
+  float: right;
+}
+
+p {
+  margin-left: 1rem;
+  display: inline-block;
+}

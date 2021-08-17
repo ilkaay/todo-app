@@ -1,0 +1,17 @@
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  color: hsl(227, 36%, 66%);
+  padding: 2rem;
+  font-size: 1rem;
+  text-align: center;
+}
+.footer a {
+  text-decoration: none;
+  color: hsl(227, 36%, 66%);
+}
+
+.footer a:hover {
+  color: cornflowerblue;
+}
