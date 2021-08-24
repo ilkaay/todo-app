@@ -4,9 +4,11 @@ import * as themeConf from "../../../../theme";
 import RemoveIcon from "./removeIcon";
 import CheckControl from "./checkControl/checkControl";
 
-const ToDoListItem: React.FC<{ text: string; onRemoveTodo: () => void }> = (
-  props
-) => {
+const ToDoListItem: React.FC<{
+  text: string;
+  id: string;
+  onRemoveTodo: () => void;
+}> = (props) => {
   const ListItem = styled.div`
     padding: 0.8rem;
     background-color: ${themeConf.backgroundColor};
@@ -19,7 +21,7 @@ const ToDoListItem: React.FC<{ text: string; onRemoveTodo: () => void }> = (
 
   return (
     <ListItem>
-      <CheckControl />
+      <CheckControl id={props.id} />
       <p>{props.text}</p>
       <button className='hide' onClick={props.onRemoveTodo}>
         <RemoveIcon />

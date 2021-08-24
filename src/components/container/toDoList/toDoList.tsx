@@ -9,8 +9,10 @@ const ToDoList: React.FC = () => {
 
   const handeOnDrag = (result: any) => {
     const items = Array.from(todosCtx.items);
-    const [renderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, renderedItem);
+    if (items.length > 1) {
+      const [renderedItem] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index, 0, renderedItem);
+    }
     todosCtx.items = items;
   };
 
@@ -32,6 +34,7 @@ const ToDoList: React.FC = () => {
                     {...provided.dragHandleProps}
                   >
                     <ToDoListItem
+                      id={item.id}
                       text={item.text}
                       onRemoveTodo={todosCtx.removeTodo.bind(null, item.id)}
                     />
