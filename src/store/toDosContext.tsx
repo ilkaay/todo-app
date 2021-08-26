@@ -39,7 +39,6 @@ const TodosContextProvider: React.FC = (props) => {
       prevTodos[selectedItemIndex] =
         prevTodos[selectedItemIndex].toggleStatus();
 
-      console.log(prevTodos.find((todo) => todo.id === todoId)?.status);
       return prevTodos;
     });
   };

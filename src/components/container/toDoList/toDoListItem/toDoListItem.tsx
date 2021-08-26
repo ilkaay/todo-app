@@ -7,6 +7,7 @@ import CheckControl from "./checkControl/checkControl";
 const ToDoListItem: React.FC<{
   text: string;
   id: string;
+  status: string;
   onRemoveTodo: () => void;
 }> = (props) => {
   const ListItem = styled.div`
@@ -21,7 +22,7 @@ const ToDoListItem: React.FC<{
 
   return (
     <ListItem>
-      <CheckControl id={props.id} />
+      <CheckControl id={props.id} status={props.status} />
       <p>{props.text}</p>
       <button className='hide' onClick={props.onRemoveTodo}>
         <RemoveIcon />
