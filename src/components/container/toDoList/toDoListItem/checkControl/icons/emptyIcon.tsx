@@ -1,21 +1,21 @@
 import styled from "styled-components";
 import * as themeConf from "../../../../../../theme";
 
-const EmptyIcon: React.FC<{ toggle: () => void }> = (props) => {
-  const Svg = styled.svg`
+const EmptyIcon: React.FC<{ statusHandler: () => void }> = (props) => {
+  const Icon = styled.svg`
     fill: ${themeConf.textColor};
   `;
   return (
-    <Svg
+    <Icon
       xmlns='http://www.w3.org/2000/svg'
       width='20'
       height='20'
       className='bi bi-circle'
       viewBox='0 0 16 16'
-      onClick={props.toggle}
+      onClick={props.statusHandler}
     >
       <path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z' />
-    </Svg>
+    </Icon>
   );
 };
 

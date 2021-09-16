@@ -3,10 +3,12 @@ import styled from "styled-components";
 import * as themeConf from "../../../../theme";
 import RemoveIcon from "./removeIcon";
 import CheckControl from "./checkControl/checkControl";
-
-const ToDoListItem: React.FC<{ text: string; onRemoveTodo: () => void }> = (
-  props
-) => {
+const ToDoListItem: React.FC<{
+  text: string;
+  id: string;
+  status: string;
+  onRemoveTodo: () => void;
+}> = (props) => {
   const ListItem = styled.div`
     padding: 0.8rem;
     background-color: ${themeConf.backgroundColor};
@@ -19,8 +21,14 @@ const ToDoListItem: React.FC<{ text: string; onRemoveTodo: () => void }> = (
 
   return (
     <ListItem>
-      <CheckControl />
-      <p>{props.text}</p>
+      <CheckControl id={props.id} status={props.status} />
+      <p
+        className={
+          props.status === "completed" ? "text-decoration-line-through" : ""
+        }
+      >
+        {props.text}
+      </p>
       <button className='hide' onClick={props.onRemoveTodo}>
         <RemoveIcon />
       </button>
