@@ -1,6 +1,6 @@
 import "./toDoList.css";
 import ToDoListItem from "./toDoListItem/toDoListItem";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TodosContext } from "../../../store/toDosContext";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import ListFooter from "./listFooter";
@@ -9,6 +9,12 @@ const ToDoList: React.FC = () => {
   const todosCtx = useContext(TodosContext);
 
   const [items, setItems] = useState(todosCtx.items);
+
+  const [filterButton, setFilterButton] = useState("all");
+
+  useEffect(() => {
+    setItems(todosCtx.items);
+  }, [todosCtx.items]);
 
   const handeOnDrag = (result: any) => {
     const items = Array.from(todosCtx.items);
@@ -21,18 +27,25 @@ const ToDoList: React.FC = () => {
 
   const allFilterHandler = () => {
     setItems(todosCtx.items);
+    setFilterButton("All");
   };
 
   const activeFilterHandler = () => {
     setItems(todosCtx.items.filter((item) => item.status === "active"));
+    setFilterButton("Active");
   };
 
   const completedFilterHandler = () => {
     setItems(todosCtx.items.filter((item) => item.status === "completed"));
+    setFilterButton("Completed");
   };
 
   const clearCompletedHandler = () => {
-    console.log("clear");
+    const items = todosCtx.items.filter((item) => item.status === "completed");
+    for (const item of items) {
+      todosCtx.removeTodo(item.id);
+    }
+    console.log(todosCtx.items);
   };
   return (
     <DragDropContext onDragEnd={handeOnDrag}>
@@ -65,6 +78,7 @@ const ToDoList: React.FC = () => {
         )}
       </Droppable>
       <ListFooter
+        filterButton={filterButton}
         allFilterHandler={allFilterHandler}
         activeFilterHandler={activeFilterHandler}
         completedFilterHandler={completedFilterHandler}

@@ -10,9 +10,9 @@ class Todo {
     this.status = todoStatus;
   }
 
-  public toggleStatus(): Todo {
+  public toggleStatus(): string {
     this.status = this.status === "active" ? "completed" : "active";
-    return this;
+    return this.status;
   }
 
 }

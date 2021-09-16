@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EmptyIcon from "./icons/emptyIcon";
 import CheckIcon from "./icons/checkIcon";
 import React, { useContext } from "react";
@@ -12,6 +12,7 @@ const CheckControl: React.FC<{ id: string; status: string }> = (props) => {
     setStatus(!status);
     todosCtx.changeStatus(props.id);
   };
+  useEffect(() => {}, [status]);
   const icon = status ? (
     <EmptyIcon statusHandler={statusHandler} />
   ) : (

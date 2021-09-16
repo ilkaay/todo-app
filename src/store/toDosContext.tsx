@@ -29,6 +29,7 @@ const TodosContextProvider: React.FC = (props) => {
 
   const removeTodoHandler = (todoId: string) => {
     setTodos((prevTodos) => {
+      console.log(prevTodos);
       return prevTodos.filter((todo) => todo.id !== todoId);
     });
   };
@@ -36,7 +37,8 @@ const TodosContextProvider: React.FC = (props) => {
   const changeStatusHandler = (todoId: string) => {
     setTodos((prevTodos) => {
       let selectedItemIndex = prevTodos.findIndex((todo) => todo.id === todoId);
-      prevTodos[selectedItemIndex] =
+
+      prevTodos[selectedItemIndex].status =
         prevTodos[selectedItemIndex].toggleStatus();
 
       return prevTodos;
