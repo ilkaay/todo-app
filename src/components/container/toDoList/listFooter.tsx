@@ -15,16 +15,15 @@ const ListFooter: React.FC<{
     color: ${themeConf.textColor};
   `;
 
-  const allStyle = {
-    color:
-      props.filterButton === "All" ? "blue" : themeConf.textColor.toString(),
-  };
   return (
     <div className='row'>
       <div className='col-3'>{todosCtx.items.length} items left</div>
       <div className='col-6'>
         <div className='d-inline-block'>
-          <Button style={allStyle} onClick={props.allFilterHandler}>
+          <Button
+            onClick={props.allFilterHandler}
+            className={props.filterButton === "All" ? "text-primary" : ""}
+          >
             All
           </Button>
         </div>
