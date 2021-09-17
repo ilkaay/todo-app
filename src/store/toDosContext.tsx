@@ -12,24 +12,22 @@ type TodosContextObj = {
 export const TodosContext = React.createContext<TodosContextObj>({
   items: [],
   addTodo: () => {},
-  removeTodo: (id: string) => {},
-  changeStatus: (id: string) => {},
+  removeTodo: () => {},
+  changeStatus: () => {},
 });
 
 const TodosContextProvider: React.FC = (props) => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   const addTodoHandler = (todoText: string) => {
-    const newTodo = new Todo(todoText, "active");
-
-    setTodos((prevTodos) => {
-      return prevTodos.concat(newTodo);
+    var newTodo = new Todo(todoText, "active");
+    setTodos((prevTodos): Todo[] => {
+      return [...prevTodos, newTodo];
     });
   };
 
   const removeTodoHandler = (todoId: string) => {
     setTodos((prevTodos) => {
-      console.log(prevTodos);
       return prevTodos.filter((todo) => todo.id !== todoId);
     });
   };

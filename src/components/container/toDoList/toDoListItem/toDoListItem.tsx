@@ -6,21 +6,23 @@ import { TodosContext } from "../../../../store/toDosContext";
 import RemoveIcon from "./removeIcon";
 import EmptyIcon from "./icons/emptyIcon";
 import CheckIcon from "./icons/checkIcon";
+
+const ListItem = styled.div`
+  padding: 0.8rem;
+  background-color: ${themeConf.backgroundColor};
+  color: ${themeConf.textColor};
+  border-bottom: 1px solid rgb(108, 117, 125, 0.3);
+  &:hover button {
+    visibility: visible;
+  }
+`;
+
 const ToDoListItem: React.FC<{
   text: string;
   id: string;
   status: string;
   onRemoveTodo: () => void;
 }> = (props) => {
-  const ListItem = styled.div`
-    padding: 0.8rem;
-    background-color: ${themeConf.backgroundColor};
-    color: ${themeConf.textColor};
-    border-bottom: 1px solid rgb(108, 117, 125, 0.3);
-    &:hover button {
-      visibility: visible;
-    }
-  `;
   const todosCtx = useContext(TodosContext);
   const toggle = props.status === "active" ? true : false;
   const [status, setStatus] = useState(toggle);

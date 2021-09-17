@@ -3,6 +3,14 @@ import * as themeConf from "../../../theme";
 import styled from "styled-components";
 import { useRef, useContext } from "react";
 import { TodosContext } from "../../../store/toDosContext";
+const Svg = styled.svg`
+  fill: ${themeConf.textColor};
+`;
+const Input = styled.input`
+  text-indent: 3rem;
+  color: ${themeConf.textColor};
+  background-color: ${themeConf.backgroundColor};
+`;
 
 const ToDoInput: React.FC = () => {
   const todosCtx = useContext(TodosContext);
@@ -17,19 +25,9 @@ const ToDoInput: React.FC = () => {
     if (enteredText.trim().length === 0) {
       return;
     }
-
     todosCtx.addTodo(enteredText);
+    todoTextInputRef.current && (todoTextInputRef.current.value = "");
   };
-
-  const Input = styled.input`
-    text-indent: 3rem;
-    color: ${themeConf.textColor};
-    background-color: ${themeConf.backgroundColor};
-  `;
-
-  const Svg = styled.svg`
-    fill: ${themeConf.textColor};
-  `;
 
   return (
     <div className='inputContainer'>

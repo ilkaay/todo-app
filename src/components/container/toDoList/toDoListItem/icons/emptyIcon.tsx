@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import * as themeConf from "../../../../../theme";
 
+const Icon = styled.svg`
+  fill: ${themeConf.textColor};
+`;
 const EmptyIcon: React.FC<{ statusHandler: () => void }> = (props) => {
-  const Icon = styled.svg`
-    fill: ${themeConf.textColor};
-  `;
   return (
     <Icon
       xmlns='http://www.w3.org/2000/svg'

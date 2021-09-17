@@ -17,11 +17,12 @@ const ToDoList: React.FC = () => {
   }, [todosCtx.items]);
 
   const handeOnDrag = (result: any) => {
-    const items = Array.from(todosCtx.items);
+    const items = todosCtx.items;
     if (items.length > 1) {
       const [renderedItem] = items.splice(result.source.index, 1);
       items.splice(result.destination.index, 0, renderedItem);
     }
+    setItems(items);
     todosCtx.items = items;
   };
 
@@ -45,7 +46,6 @@ const ToDoList: React.FC = () => {
     for (const item of items) {
       todosCtx.removeTodo(item.id);
     }
-    console.log(todosCtx.items);
   };
   return (
     <DragDropContext onDragEnd={handeOnDrag}>

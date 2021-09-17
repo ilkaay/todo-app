@@ -1,11 +1,11 @@
 import "./footer.css";
 import * as themeConf from "../../theme";
 import styled from "styled-components";
-const Footer: React.FC = () => {
-  const Footer = styled.div`
-    background-color: ${themeConf.backgroundColor};
-  `;
 
+const FooterElement = styled.div`
+  background-color: ${themeConf.backgroundColor};
+`;
+const Footer: React.FC = () => {
   const context = (
     <div className='footer'>
       <span>Challenge by</span>
@@ -29,6 +29,6 @@ const Footer: React.FC = () => {
       .
     </div>
   );
-  return <Footer>{context}</Footer>;
+  return <FooterElement>{context}</FooterElement>;
 };
 export default Footer;

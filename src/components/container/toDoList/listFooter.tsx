@@ -3,6 +3,10 @@ import * as themeConf from "../../../theme";
 import React, { useContext } from "react";
 import { TodosContext } from "../../../store/toDosContext";
 
+const Button = styled.button`
+  color: ${themeConf.textColor};
+`;
+
 const ListFooter: React.FC<{
   allFilterHandler: any;
   activeFilterHandler: any;
@@ -11,10 +15,6 @@ const ListFooter: React.FC<{
   filterButton: string;
 }> = (props) => {
   const todosCtx = useContext(TodosContext);
-  const Button = styled.button`
-    color: ${themeConf.textColor};
-  `;
-
   return (
     <div className='row'>
       <div className='col-3'>{todosCtx.items.length} items left</div>

@@ -9,30 +9,29 @@ import darkIcon from "../assets/images/icon-sun.svg";
 import lightIcon from "../assets/images/icon-moon.svg";
 import TodosContextProvider from "../store/toDosContext";
 
+const Button = styled.button`
+  position: absolute;
+  top: 6%;
+  right: 35%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 2;
+`;
+
+const WrapperElement = styled.div`
+  background-color: ${themeConf.backgroundColor};
+  color: ${themeConf.textColor};
+  z-index: -1;
+  min-height: 100vh;
+`;
 const Wrapper: React.FC = () => {
   const theme = useTheme();
-
-  const Wrapper = styled.div`
-    background-color: ${themeConf.backgroundColor};
-    color: ${themeConf.textColor};
-    z-index: -1;
-    min-height: 100vh;
-  `;
-
-  const Button = styled.button`
-    position: absolute;
-    top: 6%;
-    right: 35%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    z-index: 2;
-  `;
 
   return (
     <ThemeProvider theme={{ mode: theme.mode }}>
       <TodosContextProvider>
-        <Wrapper>
+        <WrapperElement>
           <Container />
           <Button
             onClick={() => {
@@ -53,7 +52,7 @@ const Wrapper: React.FC = () => {
             )}
           </div>
           <AppFooter />
-        </Wrapper>
+        </WrapperElement>
       </TodosContextProvider>
     </ThemeProvider>
   );
