@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as themeConf from "../../../../../../theme";
+import * as themeConf from "../../../../../theme";
 
 const CheckIcon: React.FC<{ statusHandler: () => void }> = (props) => {
   const Icon = styled.svg`

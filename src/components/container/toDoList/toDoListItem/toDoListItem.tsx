@@ -1,8 +1,11 @@
 import "./toDoListItem.css";
 import styled from "styled-components";
 import * as themeConf from "../../../../theme";
+import { useState, useContext } from "react";
+import { TodosContext } from "../../../../store/toDosContext";
 import RemoveIcon from "./removeIcon";
-import CheckControl from "./checkControl/checkControl";
+import EmptyIcon from "./icons/emptyIcon";
+import CheckIcon from "./icons/checkIcon";
 const ToDoListItem: React.FC<{
   text: string;
   id: string;
@@ -18,15 +21,23 @@ const ToDoListItem: React.FC<{
       visibility: visible;
     }
   `;
+  const todosCtx = useContext(TodosContext);
+  const toggle = props.status === "active" ? true : false;
+  const [status, setStatus] = useState(toggle);
+  const statusHandler = () => {
+    setStatus(!status);
+    todosCtx.changeStatus(props.id);
+  };
+  const icon = status ? (
+    <EmptyIcon statusHandler={statusHandler} />
+  ) : (
+    <CheckIcon statusHandler={statusHandler} />
+  );
 
   return (
     <ListItem>
-      <CheckControl id={props.id} status={props.status} />
-      <p
-        className={
-          props.status === "completed" ? "text-decoration-line-through" : ""
-        }
-      >
+      <span>{icon}</span>
+      <p className={status === false ? "text-decoration-line-through" : ""}>
         {props.text}
       </p>
       <button className='hide' onClick={props.onRemoveTodo}>
