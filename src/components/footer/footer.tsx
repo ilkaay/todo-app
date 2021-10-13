@@ -8,7 +8,7 @@ const FooterElement = styled.div`
 const Footer: React.FC = () => {
   const context = (
     <div className='footer'>
-      <span>Challenge by</span>
+      {/* <span>Challenge by</span>
       <a
         rel='noreferrer'
         href='https://www.frontendmentor.io?ref=challenge'
@@ -16,8 +16,8 @@ const Footer: React.FC = () => {
       >
         {" "}
         Frontend Mentor
-      </a>
-      <span>. Coded by</span>
+      </a> */}
+      <span> Coded by</span>
       <a
         rel='noreferrer'
         href='https://www.linkedin.com/in/ilkaayyuksel/'

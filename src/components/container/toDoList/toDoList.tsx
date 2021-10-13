@@ -10,7 +10,7 @@ const ToDoList: React.FC = () => {
 
   const [items, setItems] = useState(todosCtx.items);
 
-  const [filterButton, setFilterButton] = useState("all");
+  const [filterButton, setFilterButton] = useState("All");
 
   useEffect(() => {
     setItems(todosCtx.items);
